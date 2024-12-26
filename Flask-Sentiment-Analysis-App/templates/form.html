@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Sentiment Analyzer</h1>
+    <form method="POST">
+        <textarea name="text1" placeholder="Say Something: ...." rows="10" cols="100"></textarea><br><br>
+        <input class="example_a" type="submit" value="Analyze Sentiment">
+    </form>
+    
+    {% if text1 %}
+    <div>
+        <h2>Analysis of: "{{ text1 }}"</h2>
+        <ul>
+            <li><strong>Sentiment:</strong> {{ sentiment_label }}</li>
+            <li><strong>Confidence (Positive):</strong> {{ score_positive }}%</li>
+            <li><strong>Confidence (Negative):</strong> {{ score_negative }}%</li>
+            <li><strong>Confidence (Neutral):</strong> {{ score_neutral }}%</li>
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div style="color: red;">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <footer>
+        <span>BY Adnan, Fouzaan, Samar, Kiran</span>
+    </footer>
+</body>
+</html>
